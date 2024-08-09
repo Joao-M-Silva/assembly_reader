@@ -1,0 +1,4 @@
+ultralytics
+supervision
+pillow
+opencv-python
