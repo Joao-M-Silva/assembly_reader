@@ -15,7 +15,7 @@ import supervision as sv
 from ultralytics import YOLO
 from ultralytics.engine.results import Results
 
-from assembly_reader.operation_counter import (
+from operation_counter import (
     TaskClassification,
     ASSEMBLY_ORDER,
     OperationCounter
@@ -230,7 +230,7 @@ class Frame:
         return self.image.shape
     
     @staticmethod
-    def calculate_iou(
+    def calculate_interception(
         box_1: tuple[float, float, float, float],
         box_2: tuple[float, float, float, float,]
     ) -> float:
@@ -239,9 +239,7 @@ class Frame:
         """
         poly_1 = shapely.box(*box_1)
         poly_2 = shapely.box(*box_2)
-        iou = poly_1.intersection(poly_2).area / poly_1.union(poly_2).area
-
-        return iou
+        return poly_1.intersection(poly_2).area 
     
     def task_classification(self) -> TaskClassification:
         """
@@ -257,7 +255,7 @@ class Frame:
             # is significantly above his right hand
             self.classification = TaskClassification.Pick
             return self.classification
-        elif Frame.calculate_iou(self.left_hand.xyxy, self.right_hand.xyxy) > 0.0:
+        elif Frame.calculate_interception(self.left_hand.xyxy, self.right_hand.xyxy) > 0.0:
             # Assumption: the only time that the hands bounding boxes
             # intercept is when the worker passes the prone through the piece holes
             self.classification = TaskClassification.PassProbe

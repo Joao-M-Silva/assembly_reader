@@ -1,4 +1,1 @@
-ultralytics
-supervision
-pillow
-opencv-python
+ultralytics==8.2.74

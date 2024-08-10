@@ -7,10 +7,14 @@ import cv2
 import numpy as np
 from ultralytics import YOLO
 
-from assembly_reader.assembly_reader import AssemblyReader, Frame
+from assembly_reader import AssemblyReader, Frame
 
 
 def write_processed_frames(processed_frames: list[Frame], file_path: str):
+    """
+    Write processed frames detections into a .mp4 file
+    """
+
     if ".mp4" not in file_path:
         file_path += ".mp4"
 
@@ -22,7 +26,7 @@ def write_processed_frames(processed_frames: list[Frame], file_path: str):
     )
 
     for frame in processed_frames:
-        out.write(np.array(frame.annotate())) 
+        out.write(cv2.cvtColor(np.array(frame.annotate()), cv2.COLOR_RGB2BGR)) 
     out.release()
 
 
@@ -70,10 +74,10 @@ args = parser.parse_args()
 if __name__ == "__main__":
     reader = AssemblyReader(
         video_path=args.video_path, 
-        weights_path="./runs/detect/yolov8n_hands_detector5/weights/best.pt",
+        weights_path="./runs/detect/yolov8n_hands_detector/weights/best.pt",
         confidence_threshold=args.confidence_threshold,
         iou_threshold=args.iou_threshold,
-        pen_scratch_detector=YOLO("./runs/detect/yolov8n_scratches_detector2/weights/best.pt")
+        pen_scratch_detector=YOLO("./runs/detect/yolov8n_scratches_detector/weights/best.pt")
     )
 
     processed_frames = reader.process_video(max_frames=args.max_frames)
