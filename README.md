@@ -16,3 +16,5 @@ This repository contains an AI powered implementation to interpret assemblage vi
    python main.py --file_path {OUTPUT_VIDEO_PATH} --video_path {SOURCE_VIDEO_PATH}
    ```
 
+# Example of a processed frame
+![example_output](https://github.com/user-attachments/assets/1dd36173-fd66-451e-a10b-3666f5eb1d90)
