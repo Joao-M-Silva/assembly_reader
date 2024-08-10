@@ -15,12 +15,12 @@ This repository contains an AI powered implementation to interpret assemblage vi
    ```
    python main.py --file_path {OUTPUT_VIDEO_PATH} --video_path {SOURCE_VIDEO_PATH}
    ```
-   or a specific number of frames
+   or for a specific number of frames
    ```
    python main.py --file_path {OUTPUT_VIDEO_PATH} --video_path {SOURCE_VIDEO_PATH} -N {NUMBER_FRAMES}
    ```
 
-# Results
+# Result Example
 ![Design sem nome (4)](https://github.com/user-attachments/assets/966a1e12-2997-4cf0-b319-67fea14999fa)
 
 
