@@ -20,5 +20,8 @@ This repository contains an AI powered implementation to interpret assemblage vi
    python main.py --file_path {OUTPUT_VIDEO_PATH} --video_path {SOURCE_VIDEO_PATH} -N {NUMBER_FRAMES}
    ```
 
-# Example of a processed frame
+# Results
 ![example_output](https://github.com/user-attachments/assets/1dd36173-fd66-451e-a10b-3666f5eb1d90)
+![Design sem nome (4)](https://github.com/user-attachments/assets/966a1e12-2997-4cf0-b319-67fea14999fa)
+
+
